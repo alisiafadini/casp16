@@ -14,6 +14,7 @@ Usage:
     Replace hard-coded:
     - "massivefold_target_ids_dummy.txt" as target_id_list with relevant file 
     - number of processors (num_proc) to be used.
+    - ref_file where references pdbs are store
 
 """
 
@@ -90,7 +91,7 @@ def process_target(target_id_og):
         print(f"Scores directory {scores_dir} successfully created.")
 
     # Step 6: Run compare_structures using multiprocessing
-    ref_file = f"references_mono_filtered/{target_id}.pdb"
+    ref_file = f"references_oligo/{target_id}.pdb"
 
     # Get a list of all PDB files in the directory
     pdb_files = [
