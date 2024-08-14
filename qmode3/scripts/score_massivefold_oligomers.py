@@ -58,7 +58,7 @@ def compare_structures(args):
         print(f"Error comparing {model}: {e}")
 
 # Main script
-def process_target(target_id_og):
+def process_target(target_id_og, num_proc):
     
     target_id = target_id_og.split('_')[0].strip()
     
@@ -109,7 +109,7 @@ def process_target(target_id_og):
     tasks = [(model, ref_file, scores_dir) for model in pdb_files]
 
     # Create a pool of workers
-    with Pool(16) as pool:  # Use 16 processors
+    with Pool(num_proc) as pool:  # Use 16 processors
         pool.map(compare_structures, tasks)
 
     print(f"All comparisons completed for {target_id}.")
@@ -121,13 +121,18 @@ def process_target(target_id_og):
     else:
         print(f"Expected 8040 json files but found {len(json_files)} for {target_id}")
 
-    # Step 6: Delete the downloaded target_id folder
+    # Step 6: Delete the downloaded target_id folder and tar.gz
     shutil.rmtree(downloaded_dir)
+    if os.path.exists(output_filename):
+        os.remove(output_filename)
+
 
     print(f"Processing of {target_id} completed.\n")
 
+num_proc = 16
+target_id_list = "massivefold_target_ids_dummy.txt"
 # Load target_ids from the massivefold_target_ids.txt file
-with open('massivefold_target_ids_single.txt', 'r') as file:
+with open(target_id_list, 'r') as file:
     target_ids = file.readlines()
 
 # Process each target_id
