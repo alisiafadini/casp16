@@ -130,7 +130,6 @@ def compare_structures_monomer(args):
         f"--lddt "
         f"--local-lddt "
         f"--tm-score "
-        f"--rigid-scores "
     )
     try:
         subprocess.run(command, shell=True, check=True)
