@@ -88,7 +88,7 @@ def compare_structures_oligomer(args):
         f"--reference {reference} "
         f"--output {output_dir}/scores_{os.path.basename(model)}.json "
         f"--lddt "
-        f"--illdt "
+        f"--ilddt "
         f"--tm-score "
         f"--rigid-scores "
         f"--ics "
