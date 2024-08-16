@@ -48,7 +48,7 @@ def main(massivefold_file, failed_ids, num_proc):
             target_id = target_name[:5]
             oligomer_reference = f"{target_id}.pdb"
             if os.path.exists(f"targets_oligo/{oligomer_reference}"):
-                run_oligomer_comparison(massivefold_file, f"targets_oligo/{oligomer_reference}")
+                process_target(massivefold_file, f"targets_oligo/{oligomer_reference}", num_proc, scoring_type="oligomer")
                 oligo_condition_met = True
 
         if not s_condition_met and not oligo_condition_met:
@@ -61,8 +61,8 @@ def main(massivefold_file, failed_ids, num_proc):
         failed_ids.append(target_name)
 
 if __name__ == "__main__":
-    num_proc = 16
-    target_id_list = "massivefold_target_ids_single.txt"
+    num_proc = 126
+    target_id_list = "massivefold_target_ids.txt"
     failed_ids = []
 
     # Load target_ids from the massivefold_target_ids.txt file

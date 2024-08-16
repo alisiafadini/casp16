@@ -19,7 +19,49 @@ Usage:
     at bottom of file
 
 """
+def modify_reference_chain(model_pdb, reference_pdb):
 
+    """
+    Modifies the chain ID in a reference PDB file to match the chain ID found in a model PDB file.
+
+    The function reads the chain ID from the first ATOM or HETATM line in the model PDB file
+    and uses this chain ID to modify all ATOM and HETATM lines in the reference PDB file.
+    The modified reference PDB file is saved with a new name prefixed by 'modified_'.
+
+    Args:
+        model_pdb (str): Path to the model PDB file.
+        reference_pdb (str): Path to the reference PDB file.
+
+    Returns:
+        str: Path to the modified reference PDB file.
+
+    Raises:
+        ValueError: If the model PDB file does not contain any ATOM or HETATM lines with a chain ID.
+    """
+        
+    # Extract the chain ID from the model PDB
+    model_chain_id = None
+    with open(model_pdb, 'r') as model_file:
+        for line in model_file:
+            if line.startswith("ATOM") or line.startswith("HETATM"):
+                model_chain_id = line[21]
+                break
+    
+    if model_chain_id is None:
+        raise ValueError(f"Could not find a chain ID in model PDB: {model_pdb}")
+    
+    # Modify the reference PDB to match the chain ID
+    modified_reference_pdb = f"modified_{os.path.basename(reference_pdb)}"
+    with open(reference_pdb, 'r') as ref_file:
+        ref_lines = ref_file.readlines()
+
+    with open(modified_reference_pdb, 'w') as ref_file_modified:
+        for line in ref_lines:
+            if line.startswith("ATOM") or line.startswith("HETATM"):
+                line = line[:21] + model_chain_id + line[22:]
+            ref_file_modified.write(line)
+    
+    return modified_reference_pdb
 
 # Function to run the ost command
 def compare_structures_oligomer(args):
@@ -40,10 +82,11 @@ def compare_structures_oligomer(args):
     """
 
     model, reference, output_dir = args
+    reference_modified = modify_reference_chain(model, reference)
     command = (
         f"docker run --rm -v $(pwd):/home ost-2.8.0 compare-structures "
         f"--model {model} "
-        f"--reference {reference} "
+        f"--reference {reference_modified} "
         f"--output {output_dir}/scores_{os.path.basename(model)}.json "
         f"--lddt "
         f"--illdt "
