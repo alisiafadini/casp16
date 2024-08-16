@@ -82,11 +82,10 @@ def compare_structures_oligomer(args):
     """
 
     model, reference, output_dir = args
-    reference_modified = modify_reference_chain(model, reference)
     command = (
         f"docker run --rm -v $(pwd):/home ost-2.8.0 compare-structures "
         f"--model {model} "
-        f"--reference {reference_modified} "
+        f"--reference {reference} "
         f"--output {output_dir}/scores_{os.path.basename(model)}.json "
         f"--lddt "
         f"--illdt "
@@ -122,10 +121,11 @@ def compare_structures_monomer(args):
     """
 
     model, reference, output_dir = args
+    reference_modified = modify_reference_chain(model, reference)
     command = (
         f"docker run --rm -v $(pwd):/home ost-2.8.0 compare-structures "
         f"--model {model} "
-        f"--reference {reference} "
+        f"--reference {reference_modified} "
         f"--output {output_dir}/scores_{os.path.basename(model)}.json "
         f"--lddt "
         f"--local-lddt "
