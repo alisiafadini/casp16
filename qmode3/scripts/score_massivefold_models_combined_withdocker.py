@@ -5,7 +5,7 @@ from score_massivefold_functions import process_target
 
 
 
-def check_and_run_comparison(massivefold_file, target_id, specific_suffix, s_condition_met, oligo_condition_met, num_proc):
+def check_and_run_comparison(massivefold_file, target_id, specific_suffix, mono_condition_met, oligo_condition_met, num_proc):
     # Check for specific versions of oligomer and monomer references
     for version in range(4):  # This covers version 0 (default) to 3
         if version == 0:
@@ -21,14 +21,14 @@ def check_and_run_comparison(massivefold_file, target_id, specific_suffix, s_con
 
         elif os.path.exists(f"targets_mono/{monomer_reference}") and not oligo_condition_met:
             process_target(massivefold_file, f"targets_mono/{monomer_reference}", num_proc, scoring_type="monomer")
-            s_condition_met = True
+            mono_condition_met = True
 
-    return s_condition_met, oligo_condition_met
+    return mono_condition_met, oligo_condition_met
 
 def main(massivefold_file, failed_ids, num_proc):
     base_name = os.path.basename(massivefold_file)
     target_name = base_name.split(".")[0]
-    s_condition_met = False
+    mono_condition_met = False
     oligo_condition_met = False
 
     try:
@@ -40,8 +40,8 @@ def main(massivefold_file, failed_ids, num_proc):
                 target_id = target_name.split("_")[0][:5]
                 specific_suffix = ""
 
-            s_condition_met, oligo_condition_met = check_and_run_comparison(
-                massivefold_file, target_id, specific_suffix, s_condition_met, oligo_condition_met, num_proc
+            mono_condition_met, oligo_condition_met = check_and_run_comparison(
+                massivefold_file, target_id, specific_suffix, mono_condition_met, oligo_condition_met, num_proc
             )
 
         elif target_name.startswith("H"):
@@ -51,7 +51,7 @@ def main(massivefold_file, failed_ids, num_proc):
                 process_target(massivefold_file, f"targets_oligo/{oligomer_reference}", num_proc, scoring_type="oligomer")
                 oligo_condition_met = True
 
-        if not s_condition_met and not oligo_condition_met:
+        if not mono_condition_met and not oligo_condition_met:
             print(f"Warning: No valid comparison found for target {target_name}")
             failed_ids.append(target_name)
     
