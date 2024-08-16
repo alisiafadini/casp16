@@ -128,6 +128,7 @@ def compare_structures_monomer(args):
         f"--reference {reference_modified} "
         f"--output {output_dir}/scores_{os.path.basename(model)}.json "
         f"--lddt "
+        f"--rigid-scores "
         f"--local-lddt "
         f"--tm-score "
     )
