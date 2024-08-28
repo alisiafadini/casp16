@@ -97,6 +97,6 @@ if __name__ == "__main__":
     base_dir = "./"  
     output_dir = "./per_score_rankings/"
     
-    SCORES_OF_INTEREST = ['lddt', 'ilddt', 'local_lddt', 'tm_score', 'ics', 'ips', 'qs_global', 'dockq']
+    SCORES_OF_INTEREST = ['lddt', 'ilddt', 'local_lddt', 'tm_score', 'ics', 'ips', 'qs_global', 'qs_best', 'dockq_ave', 'dockq_wave', 'oligo_gdtts', 'oligo_gdtha', 'rmsd']
     
     process_all_targets(targets_file, base_dir, output_dir, SCORES_OF_INTEREST)
