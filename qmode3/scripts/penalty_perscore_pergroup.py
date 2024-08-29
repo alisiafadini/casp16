@@ -40,7 +40,7 @@ def parse_group_prediction(prediction_file):
 
     # Ensure there are exactly 5 model names
     if len(predicted_models) == 5:
-        return [clean_model_name(model) for model in predicted_models]
+        return [clean_model_name(model) for model in predicted_models], [model for model in predicted_models]
     else:
         raise ValueError(f"Error: Expected 5 model names in {prediction_file}, but found {len(predicted_models)}.")
 
@@ -62,11 +62,11 @@ def process_score(score, score_name):
         except (SyntaxError, ValueError):
             raise ValueError(f"Could not process score: {score}")
 
-def compute_penalty(true_rankings, predicted_models, score_name):
+def compute_penalty(true_rankings, predicted_models, score_name, group_name, og_model_names):
     """Compute the penalty for the predicted rankings."""
     penalty = 0.0
     for i in range(min(5, len(predicted_models))):
-        predicted_model = clean_model_name(predicted_models[i])  # Clean model name
+        predicted_model = predicted_models[i] #clean_model_name(predicted_models[i])  # Clean model name
         true_score = process_score(true_rankings[i][1], score_name)  # Process the true score
         predicted_score = next(
             (process_score(score, score_name) 
@@ -78,7 +78,8 @@ def compute_penalty(true_rankings, predicted_models, score_name):
         if predicted_score is not None:
             penalty += (true_score - predicted_score) ** 2
         else:
-            print(f"Warning: Predicted model {predicted_model} not found in true rankings.")
+            print(f"Warning: Predicted model {predicted_model} from group {group_name} not found in true rankings.")
+            print(f"Original model name was {og_model_names[i]}")
             penalty += true_score ** 2  # Max penalty if predicted model is not in the true rankings
 
     return penalty
@@ -115,12 +116,12 @@ def process_group_predictions(target_id, group_predictions_dir, true_rankings_di
 
     for group_file in group_files:
         group_number = group_file[len(target_id):].replace('.txt', '')  # Extract the group name
-        predicted_models = parse_group_prediction(os.path.join(target_prediction_dir, group_file))
+        predicted_models, og_model_names = parse_group_prediction(os.path.join(target_prediction_dir, group_file))
         #print(f"Predicted models for group {group_number}: {predicted_models}")
         
         group_penalties = {'group': group_number}
         for score_name, rankings in true_rankings.items():
-            penalty = compute_penalty(rankings, predicted_models, score_name)
+            penalty = compute_penalty(rankings, predicted_models, score_name, og_model_names, group_number)
             group_penalties[score_name] = penalty
         
         penalties.append(group_penalties)
