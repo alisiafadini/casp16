@@ -24,7 +24,7 @@ def parse_group_prediction(prediction_file):
     model_lines = []
     capture_models = False
     for i, line in enumerate(lines):
-        if line.startswith("QMODE 3"):
+        if re.match(r"^QMODE\s+3", line):
             capture_models = True
             continue
 
@@ -92,7 +92,7 @@ def process_group_predictions(target_id, group_predictions_dir, true_rankings_di
             # Extract the score name more robustly
             score_name = '_'.join(score_file.split('_')[-3:-1])
             score_path = os.path.join(true_rankings_dir, score_file)
-            print(f"Processing score file: {score_path}")
+            #print(f"Processing score file: {score_path}")
             df = pd.read_csv(score_path)
             true_rankings[score_name] = df.values.tolist()
 
@@ -116,7 +116,7 @@ def process_group_predictions(target_id, group_predictions_dir, true_rankings_di
     for group_file in group_files:
         group_number = group_file[len(target_id):].replace('.txt', '')  # Extract the group name
         predicted_models = parse_group_prediction(os.path.join(target_prediction_dir, group_file))
-        print(f"Predicted models for group {group_number}: {predicted_models}")
+        #print(f"Predicted models for group {group_number}: {predicted_models}")
         
         group_penalties = {'group': group_number}
         for score_name, rankings in true_rankings.items():
@@ -128,7 +128,7 @@ def process_group_predictions(target_id, group_predictions_dir, true_rankings_di
     # Save penalties to CSV
     df_penalties = pd.DataFrame(penalties)
     df_penalties.to_csv(output_file, index=False)
-    print(f"Saved penalties to {output_file}")
+    #print(f"Saved penalties to {output_file}")
 
 def process_all_targets(targets_file, group_predictions_dir, true_rankings_base_dir, output_base_dir):
     """Process all targets listed in the targets file."""
