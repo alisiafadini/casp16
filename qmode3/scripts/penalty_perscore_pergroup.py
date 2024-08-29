@@ -121,7 +121,7 @@ def process_group_predictions(target_id, group_predictions_dir, true_rankings_di
         
         group_penalties = {'group': group_number}
         for score_name, rankings in true_rankings.items():
-            penalty = compute_penalty(rankings, predicted_models, score_name, og_model_names, group_number)
+            penalty = compute_penalty(rankings, predicted_models, score_name, group_number, og_model_names)
             group_penalties[score_name] = penalty
         
         penalties.append(group_penalties)
