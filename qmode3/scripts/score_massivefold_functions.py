@@ -146,12 +146,12 @@ def process_target(target_id_og, targetid_foroutput, ref_file, num_proc, scoring
     output_id = targetid_foroutput.split('.')[0].strip()
     
     # Step 2: Download the corresponding massivefold target dataset
-    #download_url = f"https://casp-capri.sinbios.plbs.fr/index.php/s/TTqScLKZM5W6ZFi/download?path=%2Fgathered_runs&files={target_id_og.strip()}_MassiveFold_all_pdbs.tar.gz"
+    download_url = f"https://casp-capri.sinbios.plbs.fr/index.php/s/TTqScLKZM5W6ZFi/download?path=%2Fgathered_runs&files={target_id_og.strip()}_MassiveFold_all_pdbs.tar.gz"
     output_filename = f"{target_id}_MassiveFold_all_pdbs.tar.gz"
-    #subprocess.run(['wget', download_url, '-O', output_filename])
+    subprocess.run(['wget', download_url, '-O', output_filename])
 
     # Extract the tar.gz file
-    #subprocess.run(['tar', '-xzf', output_filename])
+    subprocess.run(['tar', '-xzf', output_filename])
 
     extracted_dirs = [d for d in os.listdir() if os.path.isdir(d) and d.startswith(target_id)]
     if not extracted_dirs:
