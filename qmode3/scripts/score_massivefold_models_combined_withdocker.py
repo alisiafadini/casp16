@@ -16,11 +16,12 @@ def check_and_run_comparison(massivefold_file, target_id, specific_suffix, mono_
             oligomer_reference = f"{target_id}v{version}o.pdb"
 
         if os.path.exists(f"targets_oligo/{oligomer_reference}"):
-            process_target(massivefold_file, f"targets_oligo/{oligomer_reference}", num_proc, scoring_type="oligomer")
+            print("PROCESSING", oligomer_reference)
+            process_target(massivefold_file, oligomer_reference, f"targets_oligo/{oligomer_reference}", num_proc, scoring_type="oligomer")
             oligo_condition_met = True
 
         elif os.path.exists(f"targets_mono/{monomer_reference}") and not oligo_condition_met:
-            process_target(massivefold_file, f"targets_mono/{monomer_reference}", num_proc, scoring_type="monomer")
+            process_target(massivefold_file, monomer_reference, f"targets_mono/{monomer_reference}", num_proc, scoring_type="monomer")
             mono_condition_met = True
 
     return mono_condition_met, oligo_condition_met
@@ -61,7 +62,7 @@ def main(massivefold_file, failed_ids, num_proc):
         failed_ids.append(target_name)
 
 if __name__ == "__main__":
-    num_proc = 126
+    num_proc = 20
     target_id_list = "massivefold_target_ids.txt"
     failed_ids = []
 

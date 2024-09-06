@@ -139,17 +139,19 @@ def compare_structures_monomer(args):
         print(f"Error comparing {model}: {e}")
 
 # Main script
-def process_target(target_id_og, ref_file, num_proc, scoring_type):
+def process_target(target_id_og, targetid_foroutput, ref_file, num_proc, scoring_type):
     
     target_id = target_id_og.split('_')[0].strip()
+
+    output_id = targetid_foroutput.split('.')[0].strip()
     
     # Step 2: Download the corresponding massivefold target dataset
-    download_url = f"https://casp-capri.sinbios.plbs.fr/index.php/s/TTqScLKZM5W6ZFi/download?path=%2Fgathered_runs&files={target_id_og.strip()}_MassiveFold_all_pdbs.tar.gz"
+    #download_url = f"https://casp-capri.sinbios.plbs.fr/index.php/s/TTqScLKZM5W6ZFi/download?path=%2Fgathered_runs&files={target_id_og.strip()}_MassiveFold_all_pdbs.tar.gz"
     output_filename = f"{target_id}_MassiveFold_all_pdbs.tar.gz"
-    subprocess.run(['wget', download_url, '-O', output_filename])
+    #subprocess.run(['wget', download_url, '-O', output_filename])
 
     # Extract the tar.gz file
-    subprocess.run(['tar', '-xzf', output_filename])
+    #subprocess.run(['tar', '-xzf', output_filename])
 
     extracted_dirs = [d for d in os.listdir() if os.path.isdir(d) and d.startswith(target_id)]
     if not extracted_dirs:
@@ -160,7 +162,7 @@ def process_target(target_id_og, ref_file, num_proc, scoring_type):
     print(f"Using extracted directory: {downloaded_dir}")
 
     # Step 3: Create a target_id_scores directory
-    scores_dir = f"{target_id}_scores"
+    scores_dir = f"{output_id}_scores"
     os.makedirs(scores_dir, exist_ok=True)
     print(scores_dir)
 
