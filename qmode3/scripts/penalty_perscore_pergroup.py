@@ -65,6 +65,15 @@ def process_score(score, score_name):
 def compute_penalty(true_rankings, predicted_models, score_name, group_name, og_model_names):
     """Compute the penalty for the predicted rankings."""
     penalty = 0.0
+
+        # Check if sorting is needed based on the score_name
+    needs_sorting = 'rmsd' in score_name.lower()
+
+    # If sorting is needed, sort the true_rankings based on the second item (score) in each tuple
+    if needs_sorting:
+        print(f"RESORTING true rankings for {score_name}")
+        true_rankings = sorted(true_rankings, key=lambda x: float(x[1]) if isinstance(x[1], (int, float)) else process_score(x[1], score_name))
+
     for i in range(min(5, len(predicted_models))):
         predicted_model = predicted_models[i] #clean_model_name(predicted_models[i])  # Clean model name
         true_score = process_score(true_rankings[i][1], score_name)  # Process the true score
