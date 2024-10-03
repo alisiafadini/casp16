@@ -63,7 +63,7 @@ def process_target(target_id_og, num_proc):
     target_id = target_id_og.split('_')[0].strip()
     
     # Step 2: Download the corresponding massivefold target dataset
-    download_url = f"https://casp-capri.sinbios.plbs.fr/index.php/s/TTqScLKZM5W6ZFi/download?path=%2Fgathered_runs&files={target_id_og.strip()}_MassiveFold_all_pdbs.tar.gz"
+    download_url = f"https://casp-capri.sinbios.plbs.fr/index.php/s/zkbP65Bz6SM3Xed/download?path=%2Fgathered_runs&files={target_id_og.strip()}_MassiveFold_all_pdbs.tar.gz"
     output_filename = f"{target_id}_MassiveFold_all_pdbs.tar.gz"
     subprocess.run(['wget', download_url, '-O', output_filename])
 
