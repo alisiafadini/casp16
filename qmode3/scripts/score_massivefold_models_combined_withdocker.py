@@ -3,6 +3,30 @@ import traceback
 from tqdm import tqdm
 from score_massivefold_functions import process_target
 
+"""
+Process MassiveFold protein structure predictions from CASP16.
+Scoring against the experimental reference is done by calling OpenStructure (OST) with the `process_target` function
+
+This script iterates through a list of target IDs and attempts to compare 
+their predicted structures against reference monomeric or oligomeric structures. 
+It determines the appropriate reference files, processes them using the 
+`process_target` function, and tracks any failures.
+
+Functions:
+- check_and_run_comparison: Checks for specific monomer and oligomer reference files 
+  and processes them if found.
+- main: Parses target identifiers, determines the appropriate reference structures, 
+  and processes them accordingly.
+  
+Usage:
+- The script reads a list of target IDs from `massivefold_target_ids.txt`.
+- Processed targets are evaluated against reference structures in `targets_mono/` 
+  and `targets_oligo/` directories.
+- Any failed targets are logged in `failed_ids.txt`.
+
+"""
+
+
 
 
 def check_and_run_comparison(massivefold_file, target_id, specific_suffix, mono_condition_met, oligo_condition_met, num_proc):
@@ -33,7 +57,7 @@ def main(massivefold_file, failed_ids, num_proc):
     oligo_condition_met = False
 
     try:
-        if target_name.startswith("T"):
+        if target_name.startswith("T"): # Need separate OST commands depending on whether target is a monomer or oligomer
             if "s" in target_name:
                 target_id, specific_suffix = target_name.split("s")
                 specific_suffix = f"s{target_name.split('s')[-1]}"
@@ -63,10 +87,10 @@ def main(massivefold_file, failed_ids, num_proc):
 
 if __name__ == "__main__":
     num_proc = 20
-    target_id_list = "massivefold_target_ids.txt"
+    target_id_list = "massivefold_target_ids.txt" # List of processed CASP16 targets
     failed_ids = []
 
-    # Load target_ids from the massivefold_target_ids.txt file
+    # Load target_ids
     with open(target_id_list, 'r') as file:
         target_ids = [line.strip() for line in file]
     
