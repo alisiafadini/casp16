@@ -119,7 +119,7 @@ def compute_ranking_error(true_rankings, predicted_models, score_name, group_nam
     needs_sorting = 'rmsd' in score_name.lower()
 
     if needs_sorting:
-        print(f"RESORTING true rankings for {score_name}") #if RMSD is being evaluated, the rankings should be flipped in order (lower is better)
+        #if RMSD is being evaluated, the rankings should be flipped in order (lower is better)
         true_rankings = sorted(true_rankings, key=lambda x: float(x[1]) if isinstance(x[1], (int, float)) else process_score(x[1], score_name))
 
     for i in range(min(5, len(predicted_models))):
@@ -204,10 +204,10 @@ def compute_per_target_ranking_error(targets_file, group_predictions_dir, true_r
 
 
 if __name__ == "__main__":
-    targets_file = "all_targets.txt"
-    group_predictions_dir = "./all_group_predictions/"
-    true_rankings_base_dir = "./per_score_rankings/"
-    output_base_dir = "./all_ranking_errors/"
+    targets_file = "./data/test_targets.txt"
+    group_predictions_dir = "./data_test/all_group_predictions/"
+    true_rankings_base_dir = "./data_test/per_score_rankings/"
+    output_base_dir = "./data_test/all_ranking_errors/"
 
     os.makedirs(output_base_dir, exist_ok=True) 
     compute_per_target_ranking_error(targets_file, group_predictions_dir, true_rankings_base_dir, output_base_dir)
