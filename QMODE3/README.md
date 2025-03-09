@@ -6,7 +6,7 @@ This folder contains scripts for **scoring, ranking, and analyzing** MassiveFold
 
 ## 📂 Repository Structure
 ```
-CASP16_QMODE3_Analysis/
+QMODE3/
 │── data/
 │   ├── per_score_rankings/        # Per-score rankings from OST
 │   ├── all_ranking_errors/        # Ranking errors per group
@@ -37,10 +37,9 @@ CASP16_QMODE3_Analysis/
    ```bash
    ost -h
    ```
-3. Clone this repository:
+3. Clone this repo and:
    ```bash
-   git clone https://github.com/your-username/CASP16_MassiveFold_Analysis.git
-   cd CASP16_MassiveFold_Analysis
+   cd QMODE3
    ```
 
 ---
@@ -73,12 +72,12 @@ sh compute_weighted_penalty_alltargets.sh
 
 ### Calls, under the hood, 
 ```bash
-scripts/sum_all_targets.py
+scripts/groups_lineup_with_weightedpenalty.py, scripts/sum_all_targets.py
 ```
 
 ---
 
 ## Contact
-For questions, reach out at **your-email@example.com** or visit [GitHub](https://github.com/your-username).
+For questions, reach out at **af840@cam.ac.uk**.
 
 
