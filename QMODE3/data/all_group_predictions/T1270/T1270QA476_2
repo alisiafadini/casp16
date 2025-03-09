@@ -1,0 +1,10 @@
+PFRMAT QA
+TARGET T1270
+MODEL 2
+QMODE 3
+ranked_406_cf_dropout_full_woTemplates_model_2_multimer_v3_pred_25.pdb
+ranked_21_afm_dropout_full_woTemplates_model_4_multimer_v3_pred_15.pdb
+ranked_1423_cf_woTemplates_model_5_multimer_v3_pred_24.pdb
+ranked_8_afm_basic_model_4_multimer_v3_pred_53.pdb
+ranked_1264_afm_basic_model_5_multimer_v3_pred_42.pdb
+END

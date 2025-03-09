@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1278
+MODEL 2
+QMODE 3
+ranked_32_afm_woTemplates_model_3_ptm_pred_30.pdb ranked_108_afm_woTemplates_model_3_ptm_pred_76.pdb ranked_146_afm_woTemplates_model_3_ptm_pred_130.pdb ranked_578_cf_woTemplates_model_3_ptm_pred_92.pdb ranked_233_afm_basic_model_3_ptm_pred_94.pdb 
+END

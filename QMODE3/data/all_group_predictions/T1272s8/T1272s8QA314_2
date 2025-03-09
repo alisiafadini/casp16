@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1272s8
+MODEL 2
+QMODE 3
+ranked_1366_afm_dropout_full_woTemplates_model_5_ptm_pred_62.pdb ranked_1258_afm_dropout_full_model_5_ptm_pred_185.pdb ranked_2544_afm_dropout_noSM_woTemplates_model_5_ptm_pred_61.pdb ranked_2036_afm_dropout_noSM_woTemplates_model_5_ptm_pred_125.pdb ranked_9_afm_woTemplates_model_5_ptm_pred_193.pdb 
+END

@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1271s1
+MODEL 2
+QMODE 3
+ranked_111_afm_basic_model_1_ptm_pred_8.pdb ranked_123_afm_basic_model_1_ptm_pred_50.pdb ranked_102_afm_basic_model_1_ptm_pred_27.pdb ranked_79_afm_basic_model_1_ptm_pred_60.pdb ranked_131_afm_basic_model_1_ptm_pred_14.pdb 
+END

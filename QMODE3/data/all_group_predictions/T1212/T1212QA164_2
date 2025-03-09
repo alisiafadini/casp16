@@ -1,0 +1,10 @@
+PFRMAT QA
+TARGET T1212
+MODEL 2
+QMODE 3
+cf_woTemplates_model_2_ptm_pred_70.pdb
+cf_woTemplates_model_2_ptm_pred_106.pdb
+cf_woTemplates_model_4_ptm_pred_27.pdb
+cf_dropout_full_woTemplates_model_2_ptm_pred_110.pdb
+cf_woTemplates_model_4_ptm_pred_117.pdb
+END

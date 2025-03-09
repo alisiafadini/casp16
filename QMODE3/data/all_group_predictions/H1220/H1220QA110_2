@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET H1220
+MODEL 2
+QMODE 3
+cf_woTemplates_model_3_multimer_v3_pred_35.pdb cf_woTemplates_model_5_multimer_v3_pred_5.pdb cf_woTemplates_model_5_multimer_v3_pred_12.pdb cf_woTemplates_model_5_multimer_v3_pred_41.pdb cf_woTemplates_model_5_multimer_v3_pred_9.pdb
+END

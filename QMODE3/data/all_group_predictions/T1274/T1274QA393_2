@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1274
+MODEL 2
+QMODE 3
+ranked_1289_afm_dropout_full_woTemplates_r3_model_3_ptm_pred_168.pdb ranked_917_afm_dropout_full_woTemplates_r3_model_3_ptm_pred_123.pdb ranked_478_afm_woTemplates_model_5_ptm_pred_191.pdb ranked_1201_afm_dropout_full_woTemplates_r3_model_3_ptm_pred_40.pdb ranked_269_afm_basic_model_5_ptm_pred_95.pdb 
+END

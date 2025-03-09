@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1231
+MODEL 2
+QMODE 3
+ranked_23_afm_woTemplates_model_2_ptm_pred_61.pdb ranked_54_cf_dropout_full_woTemplates_model_5_ptm_pred_143.pdb ranked_201_cf_woTemplates_model_5_ptm_pred_53.pdb ranked_110_cf_woTemplates_model_5_ptm_pred_41.pdb ranked_26_afm_dropout_noSM_woTemplates_model_2_ptm_pred_80.pdb 
+END

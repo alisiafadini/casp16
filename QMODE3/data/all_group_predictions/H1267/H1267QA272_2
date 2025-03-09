@@ -1,0 +1,10 @@
+PFRMAT QA
+TARGET H1267
+MODEL 2
+QMODE 3
+afm_woTemplates_ranked_1_unrelaxed_model_1_multimer_v2_pred_41.pdb
+afm_woTemplates_ranked_65_unrelaxed_model_4_multimer_v3_pred_19.pdb
+afm_basic_ranked_7_unrelaxed_model_1_multimer_v2_pred_22.pdb
+afm_basic_ranked_35_unrelaxed_model_3_multimer_v2_pred_13.pdb
+afm_woTemplates_ranked_10_unrelaxed_model_1_multimer_v2_pred_66.pdb
+END

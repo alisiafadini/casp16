@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1271s5
+MODEL 2
+QMODE 3
+ranked_1273_cf_woTemplates_model_1_ptm_pred_23.pdb ranked_2657_cf_woTemplates_model_1_ptm_pred_48.pdb ranked_1847_cf_woTemplates_model_1_ptm_pred_42.pdb ranked_270_cf_dropout_full_woTemplates_model_3_ptm_pred_2.pdb ranked_1644_cf_woTemplates_model_1_ptm_pred_32.pdb 
+END

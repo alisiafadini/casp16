@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1206
+MODEL 2
+QMODE 3
+afm_woTemplates_model_5_multimer_v2_pred_4.pdb afm_basic_model_3_multimer_v2_pred_31.pdb afm_woTemplates_model_4_multimer_v2_pred_2.pdb afm_woTemplates_model_4_multimer_v2_pred_0.pdb afm_basic_model_3_multimer_v2_pred_8.pdb 
+END

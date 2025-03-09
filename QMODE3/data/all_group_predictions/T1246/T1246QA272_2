@@ -1,0 +1,10 @@
+PFRMAT QA
+TARGET T1246
+MODEL 2
+QMODE 3
+afm_woTemplates_ranked_0_unrelaxed_model_5_ptm_pred_162.pdb
+afm_woTemplates_ranked_2_unrelaxed_model_5_ptm_pred_147.pdb
+afm_woTemplates_ranked_3_unrelaxed_model_5_ptm_pred_70.pdb
+afm_woTemplates_ranked_1_unrelaxed_model_5_ptm_pred_43.pdb
+afm_basic_ranked_0_unrelaxed_model_5_ptm_pred_78.pdb
+END

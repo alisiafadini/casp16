@@ -1,0 +1,10 @@
+PFRMAT QA
+TARGET H1225
+MODEL 2
+QMODE 3
+afm_dropout_full_model_4_multimer_v1_pred_16.pdb
+cf_woTemplates_model_4_multimer_v3_pred_43.pdb
+afm_dropout_full_woTemplates_model_3_multimer_v1_pred_10.pdb
+afm_dropout_full_model_2_multimer_v3_pred_18.pdb
+afm_dropout_full_woTemplates_r3_model_4_multimer_v3_pred_0.pdb
+END

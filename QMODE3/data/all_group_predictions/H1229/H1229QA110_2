@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET H1229
+MODEL 2
+QMODE 3
+afm_basic_model_3_multimer_v3_pred_50.pdb afm_basic_model_3_multimer_v3_pred_53.pdb afm_basic_model_3_multimer_v3_pred_0.pdb afm_basic_model_3_multimer_v3_pred_35.pdb afm_basic_model_3_multimer_v3_pred_15.pdb
+END

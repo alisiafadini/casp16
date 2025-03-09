@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET H1223
+MODEL 2
+QMODE 3
+ranked_4708_afm_basic_model_4_multimer_v2_pred_27.pdb ranked_4723_afm_basic_model_5_multimer_v2_pred_58.pdb ranked_5028_afm_dropout_full_model_1_multimer_v2_pred_3.pdb ranked_3521_afm_dropout_full_model_5_multimer_v2_pred_11.pdb ranked_5305_afm_basic_model_4_multimer_v2_pred_54.pdb 
+END

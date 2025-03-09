@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1237
+MODEL 2
+QMODE 3
+afm_woTemplates_model_1_multimer_v3_pred_57.pdb afm_woTemplates_model_1_multimer_v3_pred_31.pdb cf_woTemplates_model_1_multimer_v3_pred_25.pdb afm_dropout_full_woTemplates_r3_model_1_multimer_v3_pred_24.pdb cf_woTemplates_model_2_multimer_v3_pred_5.pdb
+END

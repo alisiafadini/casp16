@@ -1,0 +1,10 @@
+PFRMAT QA
+TARGET T1272s2
+MODEL 2
+QMODE 3
+afm_basic_ranked_1_unrelaxed_model_1_ptm_pred_150.pdb
+afm_basic_ranked_0_unrelaxed_model_1_ptm_pred_160.pdb
+afm_basic_ranked_2_unrelaxed_model_1_ptm_pred_190.pdb
+afm_woTemplates_ranked_0_unrelaxed_model_1_ptm_pred_19.pdb
+afm_woTemplates_ranked_1_unrelaxed_model_1_ptm_pred_98.pdb
+END

@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1272s5
+MODEL 2
+QMODE 3
+cf_woTemplates_model_5_ptm_pred_153.pdb cf_woTemplates_model_5_ptm_pred_152.pdb cf_woTemplates_model_5_ptm_pred_1.pdb cf_woTemplates_model_5_ptm_pred_160.pdb cf_woTemplates_model_5_ptm_pred_123.pdb
+END

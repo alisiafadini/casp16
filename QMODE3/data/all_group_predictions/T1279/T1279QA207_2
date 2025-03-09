@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1279
+MODEL 2
+QMODE 3
+afm_basic_model_3_ptm_pred_23.pdb afm_basic_model_3_ptm_pred_27.pdb afm_basic_model_3_ptm_pred_18.pdb afm_basic_model_3_ptm_pred_110.pdb afm_woTemplates_model_3_ptm_pred_182.pdb
+END

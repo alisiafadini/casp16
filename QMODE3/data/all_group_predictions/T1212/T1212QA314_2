@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1212
+MODEL 2
+QMODE 3
+ranked_228_afm_woTemplates_model_3_ptm_pred_33.pdb ranked_283_afm_woTemplates_model_3_ptm_pred_170.pdb ranked_3_afm_basic_model_3_ptm_pred_60.pdb ranked_54_afm_basic_model_3_ptm_pred_145.pdb ranked_2_afm_woTemplates_model_3_ptm_pred_142.pdb 
+END

@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET H1244
+MODEL 2
+QMODE 3
+cf_woTemplates_model_1_multimer_v1_pred_29.pdb cf_woTemplates_model_1_multimer_v1_pred_14.pdb cf_woTemplates_model_1_multimer_v1_pred_50.pdb cf_woTemplates_model_4_multimer_v1_pred_48.pdb cf_woTemplates_model_1_multimer_v1_pred_41.pdb 
+END

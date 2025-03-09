@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1292
+MODEL 2
+QMODE 3
+afm_dropout_full_woTemplates_model_4_multimer_v2_pred_24.pdb afm_dropout_full_woTemplates_model_5_multimer_v2_pred_64.pdb afm_dropout_full_woTemplates_model_5_multimer_v2_pred_63.pdb afm_dropout_full_woTemplates_model_5_multimer_v2_pred_21.pdb afm_dropout_full_woTemplates_model_5_multimer_v2_pred_19.pdb 
+END

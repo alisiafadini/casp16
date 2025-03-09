@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1259
+MODEL 2
+QMODE 3
+ranked_110_afm_woTemplates_model_3_multimer_v3_pred_7.pdb ranked_12_afm_woTemplates_model_3_multimer_v3_pred_63.pdb ranked_13_afm_woTemplates_model_3_multimer_v3_pred_49.pdb ranked_35_cf_dropout_full_woTemplates_model_1_multimer_v3_pred_19.pdb ranked_62_afm_woTemplates_model_3_multimer_v3_pred_41.pdb 
+END
