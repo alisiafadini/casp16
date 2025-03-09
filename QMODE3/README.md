@@ -54,6 +54,12 @@ python scripts/score_massivefold_models_combined_withdocker.py
 ```bash
 python scripts/rank_each_json.py
 ```
+### Note: the OST json files required to run Steps 1/2 are large and not currently in the repo. However, the CSV files containing parsed scores from OST to run and reproduce the later steps are in
+
+```bash
+./data/per_score_rankings
+```
+
 
 ### **Step 3: Compute Ranking Errors**
 ```bash
