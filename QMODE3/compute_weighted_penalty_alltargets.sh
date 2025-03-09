@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Set the base directories
-base_directory="./data_test/all_ranking_errors"
-script_directory="code/casp16/qmode3/scripts"
-covariances_directory="./data_test/covariances_massivefold"
-valid_groups_file="./data_test/valid_group_names_withMF.txt"
+base_directory="./data/all_ranking_errors"
+script_directory="./scripts"
+covariances_directory="./data/covariances_massivefold"
+valid_groups_file="./data/valid_group_names_withMF.txt"
 
 # Define targets for each category
 monomers_targets=('T1210' 'T1278' 'T1212' 'T1279' 'T1272s2' 'T1280' 'T1226' 'T1266'
@@ -32,6 +32,7 @@ run_penalty_script () {
 
         # Define the correct output file path
         output_file="${target}_weightedpenalty_${output_suffix}.csv"
+        
 
         python3 "$script_directory/groups_lineup_with_weightedpenalty.py" \
             --error-directory "$base_directory" \

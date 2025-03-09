@@ -204,10 +204,10 @@ def compute_per_target_ranking_error(targets_file, group_predictions_dir, true_r
 
 
 if __name__ == "__main__":
-    targets_file = "./data_test/all_targets.txt"
-    group_predictions_dir = "./data_test/all_group_predictions/"
-    true_rankings_base_dir = "./data_test/per_score_rankings/"
-    output_base_dir = "./data_test/all_ranking_errors/"
+    targets_file = "./data/all_targets.txt"
+    group_predictions_dir = "./data/all_group_predictions/"
+    true_rankings_base_dir = "./data/per_score_rankings/"
+    output_base_dir = "./data/all_ranking_errors/"
 
     os.makedirs(output_base_dir, exist_ok=True) 
     compute_per_target_ranking_error(targets_file, group_predictions_dir, true_rankings_base_dir, output_base_dir)

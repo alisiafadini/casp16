@@ -173,9 +173,9 @@ def extract_scores_for_all_targets(targets_file, base_dir, output_dir, SCORES_OF
 
 if __name__ == "__main__":
 
-    targets_file = "all_targets.txt"
-    base_dir = "./"  
-    output_dir = "./per_score_rankings/"
+    targets_file = "./data/all_targets.txt"
+    base_dir = "./ost_scores/"  
+    output_dir = "./data/per_score_rankings/"
 
     SCORES_OF_INTEREST = [
         'lddt', 'ilddt', 'tm_score', 'ics', 'ips', 'qs_global', 

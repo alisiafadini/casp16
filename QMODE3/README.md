@@ -60,9 +60,15 @@ python scripts/rank_each_json.py
 python scripts/ranking_error_perscore_pergroup.py
 ```
 
-### **Step 4: Generate Covariance Matrices**
+### **Step 4: Generate Covariance Matrices. For example:**
 ```bash
-python scripts/common_MF_covariance.py
+python scripts/common_covariance.py --directory ./data/per_score_rankings \
+    --target_names T1210 T1278 T1212 T1279 T1272s2 T1280 T1226 T1266 \
+                  T1272s3 T1284 T1231 T1272s4 T1272s5 T1272s6 T1272s7 \
+                  T1272s8 T1243 T1272s9 T1246 T1274 T1207 T1276 \
+    --z_threshold 3 \
+    --save_cov data/covariances_massivefold/common_covariances_monomers.csv
+
 ```
 
 ### **Step 5: Compute Weighted Penalties**
