@@ -18,7 +18,7 @@ def parse_arguments():
                         help="Target to be analyzed")
     parser.add_argument('--covariances-directory', required=True, type=str, 
                         help="Directory containing score covariance matrix CSV files.")
-    parser.add_argument('--target_category', required=True, type=str, 
+    parser.add_argument('--target-category', required=True, type=str, 
                         help="monomer, homo_oligomer, or hetero_oligomer")
     parser.add_argument('--valid-groups-file', required=True, type=str, 
                         help="File containing valid group names.")

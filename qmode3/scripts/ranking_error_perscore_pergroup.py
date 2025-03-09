@@ -204,7 +204,7 @@ def compute_per_target_ranking_error(targets_file, group_predictions_dir, true_r
 
 
 if __name__ == "__main__":
-    targets_file = "./data/test_targets.txt"
+    targets_file = "./data_test/all_targets.txt"
     group_predictions_dir = "./data_test/all_group_predictions/"
     true_rankings_base_dir = "./data_test/per_score_rankings/"
     output_base_dir = "./data_test/all_ranking_errors/"
