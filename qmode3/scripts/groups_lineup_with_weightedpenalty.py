@@ -142,16 +142,22 @@ def compute_weighted_penalties(dataframes_dict, cov_matrix, debug=False):
         distances = calculate_weighted_distance(df.values, cov_matrix)
         if distances is not None:
             distances = normalize_penalties(distances)
-            print("distances after norm", distances)
-            print(distances.shape)
             for group, penalty in zip(df.index, distances):
                 penalties_per_group[group] = penalties_per_group.get(group, 0) + penalty
     
     return penalties_per_group
 
-def main():
 
+def main():
     args = parse_arguments()
+    
+    # Define the base output directory as "weighted_penalties/"
+    base_output_dir = "weighted_penalties"
+    
+    # Create category-specific subdirectory inside "weighted_penalties/"
+    category_dir = os.path.join(base_output_dir, args.target_category)
+    os.makedirs(category_dir, exist_ok=True)  # Creates the directory if it doesn't exist
+    
     valid_groups = load_valid_group_names(args.valid_groups_file)
     ranking_error_file_paths = [os.path.join(args.error_directory, f"{t}_group_ranking_errors.csv") for t in args.target]
     group_dataframes = load_csv_files(ranking_error_file_paths, valid_groups, debug=args.debug)
@@ -159,8 +165,10 @@ def main():
     weighted_penalties = compute_weighted_penalties(group_dataframes, covariance_matrices, debug=args.debug)
     
     if args.output_file:
-        pd.DataFrame(list(weighted_penalties.items()), columns=['group', 'weighted_penalty']).to_csv(args.output_file, index=False)
-        print(f"Weighted penalties saved to {args.output_file}")
+        output_path = os.path.join(category_dir, args.output_file)  # Save inside "weighted_penalties/category/"
+        pd.DataFrame(list(weighted_penalties.items()), columns=['group', 'weighted_penalty']).to_csv(output_path, index=False)
+        print(f"Weighted penalties saved to {output_path}")
 
 if __name__ == '__main__':
     main()
+
