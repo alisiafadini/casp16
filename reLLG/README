@@ -1,0 +1,42 @@
+Run relative eLLG (reLLG) scoring on sets of targets and associated models.
+
+Steps before running the scripts provided here:
+
+1. The reLLG calculation requires models to have been approximately superimposed.
+One easy way to do this is to fetch the SIA_ROTATED (sequence-independent-alignment)
+versions of the model evaluation units from the predictioncenter.org website.
+These models are in .lga files, which differ from .pdb files in containing
+extra non-standard lines, which confuse the phaser_voyager reLLG script;
+these can be removed simply by using grep to get only the records starting with
+ATOM. At the same time, the file extension can be changed to .pdb.
+
+2. For each target directory, run the reLLG script as follows:
+   phenix.voyager.casp_rel_ellg models=<target> target_model=<domain_model> \
+       bfactor_treatment=all
+   This makes a .csv file with reLLG scores for each target, with the following columns:
+      reLLG_as_lddt: relative eLLG computed with atomic pLDDT values
+      status_as_lddt: non-zero indicates some failure
+      reLLG_as_lddt_coarser: relative eLLG computed with per-residue pLDDT values
+                in which "#N/A" indicates that the per-atom value should be used
+                because pLDDT values didn't vary over a residue
+      status_as_lddt_coarser: non-zero indicates some failure
+      reLLG_bfactor_constant: relative eLLG computed with constant B-factor (ignoring pLDDT)
+      status_bfactor_constant: non-zero indicates some failure
+
+Steps using the scripts provided here:
+
+3. rank_reLLG_byzscore.py: script to read the .csv files from step 2 and compute
+   group rankings based on the CASP-style Z-score. The ranking can be based on
+   the per-atom, per-residue or constant B reLLG values. Either the top-ranked or all 5
+   models can be chosen, as outlined in the documentation of the script itself.
+   The primary ranking was carried out with all 5 models.
+
+4. rank_reLLG_byzscore_best.py: similar script that computes statistics using only
+   the best model of 5 for each target. As outlined in the script documentation,
+   this has to be run separately for each ranking criterion. This was not used
+   for the final ranking calculations.
+
+5. rank_reLLG_by_mean_best.py: script to read the .csv files from step 2 and
+   compute group rankings based on mean values. Like the script in step 4, it has
+   to be run separately for each ranking criterion. This calculation was done for
+   interest and not used in the final ranking calculations.

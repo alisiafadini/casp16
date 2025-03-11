@@ -5,6 +5,11 @@ import argparse
 import copy
 import os
 
+"""
+Script to compute rankings based on mean values of reLLG, best model only.
+Like rank_reLLG_by_zscore_best.py, but using mean values instead of Z-scores.
+"""
+
 def parse_arguments():
     """
     Parse command-line arguments for the script.
@@ -97,14 +102,14 @@ def load_csv_files(file_paths, targets, score_type, top_only=False, debug=False)
             this_label = 'lddt_ratio'
             df.loc[df[this_label] == 1.0] = np.nan
         elif score_type == 'per_atom_delta':
-            df['per_atom_ratio'] = df['reLLG_as_lddt'] - df['reLLG_as_lddt_coarser']
+            df['per_atom_delta'] = df['reLLG_as_lddt'] - df['reLLG_as_lddt_coarser']
             df.drop('reLLG_as_lddt', axis=1, inplace=True)
             df.drop('reLLG_as_lddt_coarser', axis=1, inplace=True)
             df.drop('reLLG_bfactor_constant', axis=1, inplace=True)
             this_label = 'per_atom_delta'
             df.loc[df[this_label] == 0.0] = np.nan
         elif score_type == 'lddt_delta':
-            df['lddt_ratio'] = df['reLLG_as_lddt'] - df['reLLG_bfactor_constant']
+            df['lddt_delta'] = df['reLLG_as_lddt'] - df['reLLG_bfactor_constant']
             df.drop('reLLG_as_lddt', axis=1, inplace=True)
             df.drop('reLLG_as_lddt_coarser', axis=1, inplace=True)
             df.drop('reLLG_bfactor_constant', axis=1, inplace=True)
@@ -242,10 +247,10 @@ def merge_and_rank_dataframes(target_dataframes, final_avg_scores, debug=False):
     combined_dataframe.dropna(subset=['Mean_score'], inplace=True)
 
     # Rank the groups based on their mean scores (here using dense ranking)
-    combined_dataframe['Mean_Z_Rank'] = combined_dataframe['Mean_score'].rank(method='dense', ascending=False)
+    combined_dataframe['Mean_Rank'] = combined_dataframe['Mean_score'].rank(method='dense', ascending=False)
 
     # Sort the DataFrame by the ranking
-    combined_dataframe.sort_values(by='Mean_Z_Rank', inplace=True)
+    combined_dataframe.sort_values(by='Mean_Rank', inplace=True)
 
     return combined_dataframe
 

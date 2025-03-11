@@ -5,6 +5,26 @@ import argparse
 import copy
 import os
 
+"""
+Script to rank predictor groups based on comparison of actual and predicted LDDT
+values, using mean values. The basic rankings for pLDDT accuracy are:
+    CC_per_atom: correlation coefficients computed on per-atom basis
+    RMSD_per_atom: same, but scored by RMSD
+    CC_per_residue: if per-atom pLDDT values provided, average per residue before scoring
+    RMSD_per_residue: same, but scored by RMSD
+The basic rankings for value added by finer-grained pLDDT estimates
+    CC_ratio: compare ratios of per-atom and per-residue CC values
+    RMSD_ratio: compare ratios of per-residue and per-atom RMSD values
+    CC_delta: use differences instead of ratios
+    RMSD_delta: same but for RMSD
+
+Usage:
+    base_directory: path to directory containing CSV files from compute_lddt_comparisons.py
+    targets: name of file containing list of target names
+    top_only: use just top-ranked model for each target, instead of all 5
+    missing_zero: score missing models explicitly with zero instead of ignoring
+"""
+
 def parse_arguments():
     """
     Parse command-line arguments for the script.

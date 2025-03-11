@@ -5,6 +5,28 @@ import argparse
 import copy
 import os
 
+"""
+Script to compute ranking scores from the relative eLLG values computed using
+phaser_voyager.casp_rel_ellg.py. The utility of the pLDDT estimates is evaluated
+by comparing the reLLG values obtained using these estimates in weights against
+unweighted (bfactor_constant). The utility of individual per-atom estimates is
+evaluated by comparing the results using per-atom pLDDT values (where provided)
+with averaging pLDDT over the residues. The utility rankings can be computed using
+either ratios or differences.
+    reLLG_as_lddt: measure of overall model quality including pLDDT weighting
+    reLLG_bfactor_constant: measure of model quality, unweighted by pLDDT
+    reLLG_per_atom_ratio: ratio between per-atom and per-residue reLLG values
+    reLLG_per_atom_delta: differences between per-atom and per-residue reLLG values
+    reLLG_lddt_ratio: ratio between weighted and unweighted reLLG values
+    reLLG_lddt_delta: differences between weighted and unweighted
+
+Usage:
+    base_directory: path to directory containing CSV files from compute_lddt_comparisons.py
+    targets: name of file containing list of target names
+    top_only: use just top-ranked model for each target, instead of all 5
+    missing_zero: score missing models explicitly with zero instead of ignoring
+"""
+
 def parse_arguments():
     """
     Parse command-line arguments for the script.

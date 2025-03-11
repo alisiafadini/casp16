@@ -5,6 +5,11 @@ import argparse
 import copy
 import os
 
+"""
+Script to compute ranking scores using best model only. Like rank_reLLG_byzscore.py,
+but using only best model and computing one criterion at a time.
+"""
+
 def parse_arguments():
     """
     Parse command-line arguments for the script.
@@ -92,14 +97,14 @@ def load_csv_files(file_paths, targets, score_type, debug=False):
             this_label = 'lddt_ratio'
             df.loc[df[this_label] == 1.0] = np.nan
         elif score_type == 'per_atom_delta':
-            df['per_atom_ratio'] = df['reLLG_as_lddt'] - df['reLLG_as_lddt_coarser']
+            df['per_atom_delta'] = df['reLLG_as_lddt'] - df['reLLG_as_lddt_coarser']
             df.drop('reLLG_as_lddt', axis=1, inplace=True)
             df.drop('reLLG_as_lddt_coarser', axis=1, inplace=True)
             df.drop('reLLG_bfactor_constant', axis=1, inplace=True)
             this_label = 'per_atom_delta'
             df.loc[df[this_label] == 0.0] = np.nan
         elif score_type == 'lddt_delta':
-            df['lddt_ratio'] = df['reLLG_as_lddt'] - df['reLLG_bfactor_constant']
+            df['lddt_delta'] = df['reLLG_as_lddt'] - df['reLLG_bfactor_constant']
             df.drop('reLLG_as_lddt', axis=1, inplace=True)
             df.drop('reLLG_as_lddt_coarser', axis=1, inplace=True)
             df.drop('reLLG_bfactor_constant', axis=1, inplace=True)

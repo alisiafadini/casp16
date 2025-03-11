@@ -5,6 +5,26 @@ import argparse
 import copy
 import os
 
+"""
+Script to rank predictor groups based on comparison of actual and predicted LDDT
+values, using CASP Z-scores. The basic rankings for pLDDT accuracy are:
+    CC_per_atom: correlation coefficients computed on per-atom basis
+    RMSD_per_atom: same, but scored by RMSD
+    CC_per_residue: if per-atom pLDDT values provided, average per residue before scoring
+    RMSD_per_residue: same, but scored by RMSD
+The basic rankings for value added by finer-grained pLDDT estimates
+    CC_ratio: compare ratios of per-atom and per-residue CC values
+    RMSD_ratio: compare ratios of per-residue and per-atom RMSD values
+    CC_delta: use differences instead of ratios
+    RMSD_delta: same but for RMSD
+
+Usage:
+    base_directory: path to directory containing CSV files from compute_lddt_comparisons.py
+    targets: name of file containing list of target names
+    top_only: use just top-ranked model for each target, instead of all 5
+    missing_zero: score missing models explicitly with zero instead of ignoring
+"""
+
 def parse_arguments():
     """
     Parse command-line arguments for the script.
@@ -293,6 +313,38 @@ def rank_groups_CC_per_atom(target_dataframes_overall, missing_zero=False, debug
     return ranked_combined_dataframe
 
 def rank_groups_RMSD_per_atom(target_dataframes_overall, missing_zero=False, debug=False):
+    """
+    Rank groups based on the RMSD of per-atom pLDDT.
+
+    :param target_dataframes_overall: Dictionary of DataFrames.
+    :param debug: controls level of printing.
+    :return: ranked combined dataframe.
+    """
+    # First delete unwanted scores from overall target_dataframes
+    target_dataframes = copy.deepcopy(target_dataframes_overall)
+    for target, df in target_dataframes.items():
+        df.drop('CC_per_atom', axis=1, inplace=True)
+        # df.drop('RMSD_per_atom', axis=1, inplace=True)
+        df.drop('CC_per_residue', axis=1, inplace=True)
+        df.drop('RMSD_per_residue', axis=1, inplace=True)
+        df.dropna(inplace=True)
+
+    # Compute and average the Z-scores across the targets
+    final_avg_z_scores = compute_average_z_scores_across_targets(target_dataframes,
+                                                                 bigger_is_better=False,
+                                                                 missing_zero=missing_zero,
+                                                                 debug=debug)
+
+    # Combine the dataframes and rank based on the Z-scores
+    ranked_combined_dataframe = merge_and_rank_dataframes(target_dataframes, final_avg_z_scores, debug)
+
+    # Display output depending on the debug mode
+    if debug:
+        print(ranked_combined_dataframe.head(2))  # Print a sample in debug mode
+
+    return ranked_combined_dataframe
+
+def rank_groups_ASE_per_atom(target_dataframes_overall, missing_zero=False, debug=False):
     """
     Rank groups based on the RMSD of per-atom pLDDT.
 

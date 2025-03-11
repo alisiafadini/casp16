@@ -5,9 +5,17 @@ This is set up to execute OST through a Singularity installation. For each
 model of each target, it produces a .json file containing the OST scores.
 
 Second script: compute_lddt_comparisons.py
-This reads the .json files and the model PDB files, and compares the
+This reads the .json files from OST and the model PDB files, and compares the
 pLDDT scores from the PDB files with the actual LDDT scores in the .json files.
 These are collated into one CSV file per target.
 
-The two ranking scripts don't require OST, but compute (alternatively) Z-scores
-or means from the collections of .csv files produced by the previous step.
+There are two ranking scripts (which don't require OST), that compute summary
+statistics from the results in compute_lddt_comparisons.py.
+  rank_aa_local_lddt_byzscore.py (primary scoring script)
+    compute group rankings using traditional CASP Z-scores, judged optionally on
+    the top-ranked or top 5 predictions, and either ignoring missed predictions or
+    scoring them as zero.
+    Eight .csv files are produced for different ranking approaches, documented in
+    the code
+  rank_aa_local_lddt_bymean.py (secondary scoring script)
+    same, but based on the mean values of the statistics, not their Z-scores

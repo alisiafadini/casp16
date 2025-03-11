@@ -6,7 +6,23 @@ import pandas as pd
 from ost import io
 from ost import mol
 
+"""
+Script to compare actual LDDT values computed by OST, using the known target
+structure, with the predicted (pLDDT) values in the B-factor column of the model.
+Four scores are computed per model: correlation coefficient (CC) computed on a
+per-atom basis, RMSD computed per-atom, CC using the per-residue pLDDT average,
+RMSD using the per-residue pLDDT average.
 
+Usage:
+    This is hard-wired at the moment
+
+    Run from a directory containing:
+      targets.list: list of CASP domain target names
+      csv files with lDDT scores from score_aa_local_lddt.py
+    which in turn is inside a directory containing
+      domain_model_dirs: directory of directories containing predictions
+
+"""
 
 def compare_lddt_values(mdl, scoring_data):
 
@@ -54,7 +70,7 @@ def compare_lddt_values(mdl, scoring_data):
     bfactor_array = np.array(bfactors)
     if bfactor_array.max() == bfactor_array.min():
         return [None,None,None,None]
-        
+
     bfactor_per_residue_array = np.array(bfactors_per_residue)
     aa_lddt_array = np.array(aa_lddt)
     cc = np.corrcoef(bfactor_array, aa_lddt_array)
