@@ -90,6 +90,6 @@ scripts/groups_lineup_with_weightedpenalty.py, scripts/sum_all_targets.py
 ---
 
 ## Contact
-For questions, reach out at **af840@cam.ac.uk**.
+For questions, reach out at **af840@cam.ac.uk** or **rjr27@cam.ac.uk**.
 
 
