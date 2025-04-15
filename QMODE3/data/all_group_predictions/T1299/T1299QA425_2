@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1299
+MODEL 2
+QMODE 3
+cf_woTemplates_model_5_ptm_pred_69.pdb cf_woTemplates_model_5_ptm_pred_107.pdb cf_woTemplates_model_5_ptm_pred_183.pdb cf_woTemplates_model_5_ptm_pred_113.pdb cf_woTemplates_model_5_ptm_pred_134.pdb
+END

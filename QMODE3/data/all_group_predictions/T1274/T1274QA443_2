@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1274
+MODEL 2
+QMODE 3
+cf_woTemplates_model_5_ptm_pred_146.pdb cf_woTemplates_model_3_ptm_pred_185.pdb cf_woTemplates_model_3_ptm_pred_117.pdb cf_woTemplates_model_5_ptm_pred_161.pdb afm_dropout_full_woTemplates_model_5_ptm_pred_128.pdb
+END

@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1249v2
+MODEL 2
+QMODE 3
+afm_dropout_full_model_2_multimer_v3_pred_21.pdb afm_dropout_full_model_2_multimer_v3_pred_51.pdb afm_dropout_full_model_2_multimer_v3_pred_62.pdb afm_dropout_full_model_2_multimer_v3_pred_11.pdb afm_dropout_full_model_2_multimer_v3_pred_49.pdb
+END

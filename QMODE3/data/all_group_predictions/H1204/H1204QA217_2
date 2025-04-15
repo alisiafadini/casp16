@@ -1,0 +1,10 @@
+PFRMAT QA
+TARGET H1204
+MODEL 2
+QMODE 3
+afm_dropout_full_model_5_multimer_v1_pred_2.pdb
+afm_dropout_full_woTemplates_r3_model_5_multimer_v1_pred_22.pdb
+afm_dropout_full_model_5_multimer_v1_pred_40.pdb
+afm_basic_model_5_multimer_v1_pred_39.pdb
+afm_dropout_full_model_5_multimer_v1_pred_31.pdb
+END

@@ -1,0 +1,10 @@
+PFRMAT QA
+TARGET T1276
+MODEL 2
+QMODE 3
+afm_dropout_full_model_2_ptm_pred_82.pdb
+afm_dropout_full_model_2_ptm_pred_45.pdb
+afm_dropout_full_woTemplates_model_2_ptm_pred_152.pdb
+afm_dropout_full_woTemplates_r3_model_3_ptm_pred_34.pdb
+afm_dropout_full_model_2_ptm_pred_90.pdb
+END

@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1269
+MODEL 2
+QMODE 3
+cf_woTemplates_model_4_ptm_pred_131.pdb cf_woTemplates_model_4_ptm_pred_145.pdb cf_woTemplates_model_4_ptm_pred_126.pdb cf_woTemplates_model_4_ptm_pred_72.pdb cf_woTemplates_model_4_ptm_pred_151.pdb
+END

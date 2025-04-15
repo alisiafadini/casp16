@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET H1258
+MODEL 2
+QMODE 3
+afm_basic_model_3_multimer_v3_pred_14.pdb.pdb afm_basic_model_4_multimer_v3_pred_3.pdb.pdb afm_basic_model_4_multimer_v3_pred_12.pdb.pdb afm_dropout_full_model_4_multimer_v3_pred_3.pdb.pdb afm_dropout_full_model_4_multimer_v3_pred_9.pdb.pdb
+END

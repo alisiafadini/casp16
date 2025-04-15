@@ -1,0 +1,7 @@
+QMODE 3
+cf_woTemplates_model_3_multimer_v1_pred_14.pdb.pdb
+cf_woTemplates_model_3_multimer_v1_pred_1.pdb.pdb
+afm_dropout_full_model_3_multimer_v1_pred_12.pdb.pdb
+afm_dropout_noSM_woTemplates_model_3_multimer_v1_pred_41.pdb.pdb
+afm_woTemplates_model_3_multimer_v1_pred_51.pdb.pdb
+END

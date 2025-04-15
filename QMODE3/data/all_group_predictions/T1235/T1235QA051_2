@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1235
+MODEL 2
+QMODE 3
+afm_woTemplates_model_4_multimer_v3_pred_9.pdb cf_woTemplates_model_5_multimer_v2_pred_24.pdb cf_woTemplates_model_5_multimer_v2_pred_9.pdb cf_woTemplates_model_4_multimer_v3_pred_7.pdb cf_woTemplates_model_5_multimer_v2_pred_66.pdb
+END

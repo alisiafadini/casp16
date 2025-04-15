@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1201
+MODEL 2
+QMODE 3
+ranked_1_cf_woTemplates_model_2_multimer_v1_pred_10.pdb ranked_9_afm_basic_model_2_multimer_v1_pred_54.pdb ranked_6_afm_basic_model_2_multimer_v1_pred_35.pdb ranked_2_afm_basic_model_2_multimer_v1_pred_22.pdb ranked_48_cf_woTemplates_model_4_multimer_v1_pred_54.pdb
+END

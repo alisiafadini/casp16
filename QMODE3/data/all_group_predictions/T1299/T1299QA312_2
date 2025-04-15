@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET T1299
+MODEL 2
+QMODE 3
+ranked_20_cf_woTemplates_model_4_ptm_pred_6.pdb ranked_109_cf_woTemplates_model_4_ptm_pred_91.pdb ranked_99_cf_woTemplates_model_4_ptm_pred_39.pdb ranked_135_cf_woTemplates_model_4_ptm_pred_79.pdb ranked_125_cf_dropout_full_woTemplates_model_4_ptm_pred_95.pdb 
+END

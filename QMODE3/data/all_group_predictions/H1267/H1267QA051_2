@@ -1,0 +1,6 @@
+PFRMAT QA
+TARGET H1267
+MODEL 2
+QMODE 3
+afm_basic_model_1_multimer_v2_pred_41.pdb afm_woTemplates_model_1_multimer_v2_pred_41.pdb afm_woTemplates_model_1_multimer_v2_pred_55.pdb afm_woTemplates_model_1_multimer_v2_pred_60.pdb afm_basic_model_1_multimer_v2_pred_22.pdb
+END

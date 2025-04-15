@@ -1,0 +1,7 @@
+QMODE 3
+cf_woTemplates_model_5_ptm_pred_39.pdb.pdb
+afm_basic_model_1_ptm_pred_48.pdb.pdb
+afm_basic_model_1_ptm_pred_66.pdb.pdb
+cf_dropout_full_woTemplates_model_5_ptm_pred_3.pdb.pdb
+afm_dropout_full_woTemplates_model_1_ptm_pred_33.pdb.pdb
+END
