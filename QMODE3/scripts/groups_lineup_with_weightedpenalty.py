@@ -96,7 +96,7 @@ def load_covariance_matrices(directory, target_category, debug=False):
     :param file_paths: List of file paths for covariance matrices.
     :param target_names: Corresponding target names for the covariance files.
     :param debug: Flag to enable debug mode.
-    :return: Dictionary mapping target names to NumPy covariance matrices.
+    :return: Category covariance matrix with matching score labels on both axes.
     """
         
     df = pd.read_csv(f"{directory}/common_covariances_{target_category}.csv", index_col=0)
@@ -104,7 +104,7 @@ def load_covariance_matrices(directory, target_category, debug=False):
     df.drop(columns=[col for col in ["rmsd", "ips", "ics"] if col in df.columns], errors='ignore', inplace=True)
     df.drop(index=[row for row in ["rmsd", "ips", "ics"] if row in df.index], errors='ignore', inplace=True)
         
-    covariance_matrix = df.values.astype(float)
+    covariance_matrix = df.loc[df.columns, df.columns].astype(float)
         
     if debug:
         print(f"Loaded covariance matrix with shape {df.shape}")
@@ -116,7 +116,7 @@ def compute_weighted_penalties(dataframes_dict, cov_matrix, debug=False):
     Computes weighted penalties for each group using covariance-weighted distance.
 
     :param dataframes_dict: Dictionary of DataFrames (penalty scores per target).
-    :param covariances_dict: Dictionary of covariance matrices (per target).
+    :param cov_matrix: Category covariance matrix indexed by score name.
     :param debug: Flag to enable debug mode.
     :return: Dictionary of computed penalties per group.
     """
@@ -136,10 +136,10 @@ def compute_weighted_penalties(dataframes_dict, cov_matrix, debug=False):
     for file_path, df in dataframes_dict.items():
         target_name = os.path.basename(file_path).split('_')[0]
         df = add_prefix_to_columns(df, target_name)
-        columns_to_drop = [f"{target_name}_rmsd", f"{target_name}_ips", f"{target_name}_ics"]
-        df = df.drop(columns=[col for col in columns_to_drop if col in df.columns], errors='ignore')
+        score_columns = [f"{target_name}_{score}" for score in cov_matrix.columns]
+        ranking_errors = df.loc[:, score_columns].to_numpy()
 
-        distances = calculate_weighted_distance(df.values, cov_matrix)
+        distances = calculate_weighted_distance(ranking_errors, cov_matrix.to_numpy())
         if distances is not None:
             distances = normalize_penalties(distances)
             for group, penalty in zip(df.index, distances):
